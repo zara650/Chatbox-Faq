@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>FAQ.ai — Intelligent Support</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Poppins',sans-serif;background:#e8eef5;color:#1e293b;height:100vh;overflow:hidden}
+.app{display:flex;height:100vh}
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar{width:4px}
+::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:#94a3b8;border-radius:4px}
+::-webkit-scrollbar-thumb:hover{background:#64748b}
+
+/* ── Sidebar ── */
+.sidebar{width:230px;background:#dde6f0;border-right:1px solid #b8cfe0;display:flex;flex-direction:column;flex-shrink:0}
+.logo{padding:20px 18px;border-bottom:1px solid #374151;display:flex;align-items:center;gap:11px}
+.logo-icon{width:34px;height:34px;background:#3b82f6;border-radius:9px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:17px;box-shadow:0 3px 10px rgba(59,130,246,.3)}
+.logo-text{font-size:15px;font-weight:600;color:#1e3a5f;letter-spacing:-.2px}
+.logo-sub{font-size:10px;color:#64748b;margin-top:1px;font-weight:400}
+.greeting{padding:13px 18px;border-bottom:1px solid #b8cfe0;background:#d4e1ee}
+.greeting-time{font-size:11px;color:#64748b;font-weight:400}
+.greeting-name{font-size:13px;font-weight:500;color:#1e3a5f;margin-top:2px}
+.nav-section-label{font-size:10px;color:#64748b;text-transform:uppercase;letter-spacing:.1em;padding:16px 18px 6px;font-weight:500}
+.nav-item{display:flex;align-items:center;gap:10px;padding:10px 18px;font-size:13px;color:#475569;cursor:pointer;border-left:2px solid transparent;transition:all .15s;user-select:none;font-weight:400}
+.nav-item:hover{background:#c8d9e8;color:#2563eb}
+.nav-item.active{background:#bfd4e8;color:#1d4ed8;border-left-color:#3b82f6;font-weight:500}
+.nav-arrow{margin-left:auto;font-size:11px;color:#3b82f6}
+.history-section{flex:1;overflow-y:auto;padding:0 10px}
+.history-item{padding:7px 10px;border-radius:7px;font-size:12px;color:#64748b;cursor:pointer;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:flex;align-items:center;gap:6px;font-weight:400;transition:all .15s}
+.history-item:hover{background:#c8d9e8;color:#1e293b}
+.history-dot{font-size:8px;color:#94a3b8;flex-shrink:0}
+.sidebar-footer{padding:14px 18px;border-top:1px solid #b8cfe0;display:flex;align-items:center;gap:10px}
+.avatar{width:30px;height:30px;border-radius:50%;background:#dbeafe;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:600;color:#1d4ed8;flex-shrink:0;border:1.5px solid #93c5fd}
+.footer-name{font-size:12px;font-weight:500;color:#1e293b}
+.footer-org{font-size:10px;color:#64748b}
+
+/* ── Main ── */
+.main{flex:1;display:flex;flex-direction:column;overflow:hidden}
+.topbar{padding:14px 26px;background:#dde6f0;border-bottom:1px solid #b8cfe0;display:flex;align-items:center;justify-content:space-between;flex-shrink:0}
+.topbar-title{font-size:15px;font-weight:600;color:#1e293b;letter-spacing:-.2px}
+.topbar-sub{font-size:11px;color:#64748b;margin-top:2px;font-weight:400}
+.topbar-right{display:flex;align-items:center;gap:14px}
+.status-pill{display:flex;align-items:center;gap:5px;background:#dbeafe;border:1px solid #93c5fd;padding:4px 10px;border-radius:20px}
+.status-dot{width:6px;height:6px;background:#3b82f6;border-radius:50%;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.5}}
+.status-text{font-size:11px;color:#1d4ed8;font-weight:500}
+.topbar-stat{font-size:11px;color:#64748b;display:flex;align-items:center;gap:4px;font-weight:400}
+.topbar-stat.ctx{color:#3b82f6}
+.clear-btn{font-size:11px;color:#64748b;border:1px solid #94a3b8;background:none;padding:5px 11px;border-radius:7px;cursor:pointer;font-family:'Poppins',sans-serif;transition:all .15s}
+.clear-btn:hover{border-color:#3b82f6;color:#1d4ed8;background:#dbeafe}
+
+/* ── Pages ── */
+.page{display:none;flex:1;flex-direction:column;overflow:hidden}
+.page.active{display:flex}
+
+/* ── Chat messages ── */
+.chat-messages{flex:1;overflow-y:auto;padding:22px 26px;display:flex;flex-direction:column;gap:16px;background:#edf2f7}
+.msg{display:flex;align-items:flex-end;gap:10px;animation:fadeUp .2s ease}
+.msg.user{flex-direction:row-reverse}
+@keyframes fadeUp{from{opacity:0;transform:translateY(7px)}to{opacity:1;transform:translateY(0)}}
+.msg-avatar{width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0}
+.msg-avatar.bot{background:#dbeafe;color:#1d4ed8;border:1.5px solid #93c5fd}
+.msg-avatar.user{background:#3b82f6;color:#fff}
+.msg-body{max-width:72%;display:flex;flex-direction:column;gap:4px}
+.msg.user .msg-body{align-items:flex-end}
+.context-badge{font-size:10px;color:#3b82f6;display:flex;align-items:center;gap:3px;padding:0 3px;font-weight:500}
+.bubble{padding:12px 16px;border-radius:16px;font-size:13px;line-height:1.7;word-break:break-word;font-weight:400}
+.bubble.bot{background:#ffffff;border:1px solid #cbd5e1;border-radius:4px 16px 16px 16px;color:#1e293b;box-shadow:0 4px 12px rgba(0,0,0,.25)}
+.bubble.user{background:#3b82f6;border-radius:16px 4px 16px 16px;color:#ffffff;box-shadow:0 4px 14px rgba(59,130,246,.3)}
+.msg-meta{display:flex;align-items:center;gap:6px;flex-wrap:wrap;padding:0 2px}
+.conf-badge{font-size:10px;color:#94a3b8;display:flex;align-items:center;gap:2px;font-weight:400}
+.conf-badge.good{color:#2563eb}
+.cat-tag{font-size:10px;padding:2px 8px;border-radius:20px;font-weight:500;border:1px solid transparent}
+.cat-Account {background:#1e3a5f;color:#60a5fa;border-color:#1d4ed8}
+.cat-Orders  {background:#dbeafe;color:#4ade80;border-color:#93c5fd}
+.cat-Shipping{background:#3b1f5e;color:#c084fc;border-color:#7c3aed}
+.cat-Payments{background:#451a03;color:#fb923c;border-color:#c2410c}
+.cat-Technical{background:#4c0519;color:#f87171;border-color:#be123c}
+.cat-General {background:#f1f5f9;color:#475569;border-color:#cbd5e1}
+
+/* Feedback */
+.feedback-row{display:flex;align-items:center;gap:8px;padding:2px 2px;flex-wrap:wrap;margin-top:2px}
+.feedback-label{font-size:10px;color:#6b7280;font-weight:400}
+.fb-btn{display:flex;align-items:center;gap:3px;font-size:11px;color:#64748b;border:1px solid #cbd5e1;background:#f1f5f9;padding:3px 10px;border-radius:20px;cursor:pointer;font-family:'Poppins',sans-serif;transition:all .15s;font-weight:400}
+.fb-btn:hover.up{border-color:#93c5fd;color:#1d4ed8;background:#dbeafe}
+.fb-btn:hover.down{border-color:#be123c;color:#f87171;background:#4c0519}
+.fb-given{font-size:10px;color:#6b7280;font-weight:400}
+
+/* Typing */
+.typing-msg{display:flex;align-items:flex-end;gap:10px;animation:fadeUp .2s ease}
+.typing-bubble{background:#ffffff;border:1px solid #cbd5e1;border-radius:4px 16px 16px 16px;padding:13px 17px;display:flex;gap:5px;align-items:center;box-shadow:0 4px 12px rgba(0,0,0,.25)}
+.dot{width:6px;height:6px;border-radius:50%;background:#94a3b8}
+.dot:nth-child(1){animation:bounce 1.2s infinite}
+.dot:nth-child(2){animation:bounce 1.2s .2s infinite}
+.dot:nth-child(3){animation:bounce 1.2s .4s infinite}
+@keyframes bounce{0%,80%,100%{transform:translateY(0)}40%{transform:translateY(-5px)}}
+
+/* Quick chips */
+.quick-chips{padding:13px 26px 15px;border-top:1px solid #b8cfe0;background:#dde6f0}
+.chips-label{font-size:11px;color:#64748b;margin-bottom:8px;display:flex;align-items:center;gap:4px;font-weight:500}
+.chips-wrap{display:flex;flex-wrap:wrap;gap:7px}
+.chip{font-size:12px;padding:6px 13px;border-radius:20px;border:1px solid #b8cfe0;background:#f1f5f9;color:#475569;cursor:pointer;transition:all .15s;font-family:'Poppins',sans-serif;font-weight:400}
+.chip:hover{border-color:#3b82f6 !important;color:#1d4ed8 !important;background:#dbeafe !important}
+
+/* Suggestions */
+.suggestions-area{padding:8px 26px 10px;background:#dde6f0;border-top:1px solid #b8cfe0}
+.sugg-label{font-size:10px;color:#64748b;display:flex;align-items:center;gap:3px;margin-bottom:5px;font-weight:500}
+.sugg{font-size:11px;background:#f1f5f9;border:1px solid #b8cfe0;padding:5px 12px;border-radius:20px;cursor:pointer;color:#475569;font-family:'Poppins',sans-serif;transition:all .15s;display:inline-block;margin:0 5px 5px 0;font-weight:400}
+.sugg:hover{border-color:#3b82f6;color:#1d4ed8;background:#dbeafe}
+
+/* Input */
+.input-area{padding:12px 26px 16px;border-top:1px solid #b8cfe0;background:#dde6f0}
+.input-wrap{display:flex;align-items:center;gap:8px;background:#ffffff;border:1.5px solid #b8cfe0;border-radius:12px;padding:9px 13px;transition:all .2s}
+.input-wrap:focus-within{border-color:#3b82f6;box-shadow:0 0 0 3px rgba(59,130,246,.12)}
+#chatInput{flex:1;background:none;border:none;outline:none;font-size:13px;color:#1e293b;font-family:'Poppins',sans-serif;font-weight:400}
+#chatInput::placeholder{color:#94a3b8}
+.send-btn{width:34px;height:34px;border-radius:9px;background:#3b82f6;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;color:#fff;font-size:15px;flex-shrink:0;transition:all .15s;box-shadow:0 2px 8px rgba(59,130,246,.3)}
+.send-btn:hover{background:#2563eb;box-shadow:0 4px 14px rgba(59,130,246,.3)}
+.send-btn:disabled{opacity:.4;cursor:not-allowed;box-shadow:none}
+.context-hint{font-size:10px;color:#3b82f6;margin-top:6px;display:flex;align-items:center;gap:3px;font-weight:500}
+
+/* ── Cards (global) ── */
+.card,.faq-card,.stat-card,.chart-card,.progress-card,.add-form{
+  background:#ffffff;border:1px solid #cbd5e1;border-radius:14px;
+  box-shadow:0 4px 16px rgba(59,130,246,.08)
+}
+
+/* ── FAQ Manager ── */
+.faq-page{flex:1;overflow-y:auto;padding:24px 26px;background:#edf2f7}
+.page-header{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:20px}
+.page-title{font-size:16px;font-weight:600;color:#1e293b;letter-spacing:-.2px}
+.page-sub{font-size:12px;color:#64748b;margin-top:3px;font-weight:400}
+.add-btn{display:flex;align-items:center;gap:5px;background:#3b82f6;color:#fff;border:none;padding:9px 16px;border-radius:9px;font-size:13px;cursor:pointer;font-family:'Poppins',sans-serif;font-weight:500;transition:all .15s;box-shadow:0 2px 8px rgba(59,130,246,.3)}
+.add-btn:hover{background:#2563eb;box-shadow:0 4px 12px rgba(59,130,246,.3)}
+.add-form{padding:20px;margin-bottom:18px;display:none}
+.add-form.open{display:block}
+.form-row{margin-bottom:13px}
+.form-label{font-size:11px;color:#64748b;margin-bottom:5px;display:block;font-weight:500}
+.form-input{width:100%;border:1.5px solid #cbd5e1;border-radius:9px;padding:9px 13px;font-size:13px;color:#1e293b;font-family:'Poppins',sans-serif;background:#f8fafc;outline:none;transition:all .15s;font-weight:400}
+.form-input:focus{border-color:#3b82f6;box-shadow:0 0 0 3px rgba(59,130,246,.12)}
+textarea.form-input{resize:vertical;min-height:76px}
+.form-actions{display:flex;gap:8px;justify-content:flex-end;margin-top:4px}
+.cancel-btn{background:none;border:1.5px solid #cbd5e1;color:#64748b;padding:7px 15px;border-radius:9px;font-size:13px;cursor:pointer;font-family:'Poppins',sans-serif;transition:all .15s;font-weight:400}
+.cancel-btn:hover{border-color:#3b82f6;color:#2563eb}
+.save-btn{background:#3b82f6;color:#fff;border:none;padding:8px 18px;border-radius:9px;font-size:13px;cursor:pointer;font-family:'Poppins',sans-serif;font-weight:500;transition:all .15s;box-shadow:0 2px 8px rgba(59,130,246,.3)}
+.save-btn:hover{background:#2563eb}
+.search-wrap{display:flex;align-items:center;gap:8px;background:#ffffff;border:1.5px solid #b8cfe0;border-radius:9px;padding:9px 13px;margin-bottom:14px;transition:all .15s}
+.search-wrap:focus-within{border-color:#3b82f6;box-shadow:0 0 0 3px rgba(59,130,246,.12)}
+#faqSearch{flex:1;background:none;border:none;outline:none;font-size:13px;color:#1e293b;font-family:'Poppins',sans-serif;font-weight:400}
+#faqSearch::placeholder{color:#94a3b8}
+.faq-card{padding:16px 18px;margin-bottom:10px;transition:all .2s}
+.faq-card:hover{border-color:#3b82f6;box-shadow:0 0 0 1px #3b82f6,0 8px 24px rgba(59,130,246,.15)}
+.faq-card-top{display:flex;align-items:flex-start;justify-content:space-between;gap:10px;margin-bottom:7px}
+.faq-q{font-size:13px;font-weight:500;color:#1e293b;flex:1}
+.faq-a{font-size:12px;color:#64748b;line-height:1.65;font-weight:400}
+.faq-actions{display:flex;gap:4px;flex-shrink:0}
+.icon-btn{width:28px;height:28px;border-radius:7px;border:none;background:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:14px;transition:all .15s;color:#4b5563}
+.icon-btn:hover{background:#e2e8f0;color:#1e293b}
+.icon-btn.del:hover{background:#4c0519;color:#f87171}
+.faq-stats{margin-top:8px;font-size:10px;color:#94a3b8;display:flex;gap:10px;font-weight:400}
+
+/* ── Analytics ── */
+.analytics-page{flex:1;overflow-y:auto;padding:24px 26px;background:#edf2f7}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:16px}
+.stat-card{padding:16px}
+.stat-icon{width:34px;height:34px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:16px;margin-bottom:11px}
+.stat-label{font-size:11px;color:#64748b;margin-bottom:4px;font-weight:400}
+.stat-val{font-size:24px;font-weight:600;color:#1e293b;letter-spacing:-.5px}
+.stat-sub{font-size:10px;color:#94a3b8;margin-top:2px;font-weight:400}
+.chart-card{padding:18px;margin-bottom:14px}
+.chart-title{font-size:13px;font-weight:600;color:#1e293b;margin-bottom:14px;letter-spacing:-.1px}
+.bar-row{display:flex;align-items:center;gap:10px;margin-bottom:9px}
+.bar-lbl{font-size:11px;color:#64748b;width:150px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;flex-shrink:0;font-weight:400}
+.bar-track{flex:1;background:#e2e8f0;border-radius:4px;height:8px;overflow:hidden}
+.bar-fill{height:100%;border-radius:4px;background:#3b82f6;transition:width .7s ease}
+.bar-count{font-size:11px;color:#94a3b8;width:20px;text-align:right;flex-shrink:0;font-weight:400}
+.progress-card{padding:18px;margin-bottom:14px}
+.progress-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:9px}
+.progress-lbl{font-size:13px;font-weight:500;color:#1e293b}
+.progress-pct{font-size:14px;font-weight:600}
+.progress-track{height:8px;background:#e2e8f0;border-radius:4px;overflow:hidden;margin-bottom:7px}
+.progress-bar{height:100%;border-radius:4px;transition:width .7s ease}
+.progress-sub{font-size:11px;color:#94a3b8;font-weight:400}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.mini-pie{display:flex;flex-direction:column;gap:9px;margin-top:8px}
+.pie-item{display:flex;align-items:center;gap:8px;font-size:12px;color:#64748b;font-weight:400}
+.pie-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
+
+/* Toast */
+.toast{position:fixed;bottom:24px;right:24px;background:#1e293b;color:#f1f5f9;padding:11px 18px;border-radius:11px;font-size:13px;z-index:9999;animation:fadeUp .25s ease;pointer-events:none;font-family:'Poppins',sans-serif;font-weight:500;box-shadow:0 8px 24px rgba(0,0,0,.4)}
+</style>
+</head>
+<body>
+<div class="app">
+
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="logo">
+      <div class="logo-icon">🤖</div>
+      <div>
+        <div class="logo-text">FAQ.ai</div>
+        <div class="logo-sub">Intelligent support</div>
+      </div>
+    </div>
+    <div class="greeting">
+      <div class="greeting-time" id="greetTime"></div>
+      <div class="greeting-name">Welcome back 👋</div>
+    </div>
+    <div class="nav-section-label">Menu</div>
+    <div class="nav-item active" onclick="switchPage('chat',this)">
+      <span>💬</span> Chat <span class="nav-arrow" id="arr-chat">›</span>
+    </div>
+    <div class="nav-item" onclick="switchPage('faqs',this)">
+      <span>📋</span> FAQ Manager <span class="nav-arrow" id="arr-faqs" style="display:none">›</span>
+    </div>
+    <div class="nav-item" onclick="switchPage('analytics',this)">
+      <span>📊</span> Analytics <span class="nav-arrow" id="arr-analytics" style="display:none">›</span>
+    </div>
+    <div class="nav-section-label">Recent chats</div>
+    <div class="history-section" id="historyList"></div>
+    <div class="sidebar-footer">
+      <div class="avatar">Z</div>
+      <div>
+        <div class="footer-name">Zara Alam</div>
+        <div class="footer-org">AI Intern · CodeAlpha</div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Main -->
+  <div class="main">
+    <div class="topbar">
+      <div>
+        <div class="topbar-title" id="pageTitle">Chat</div>
+        <div class="topbar-sub" id="pageSub">Context-aware · Feedback · Smart suggestions</div>
+      </div>
+      <div class="topbar-right">
+        <div class="topbar-stat" id="statQueries">💬 0 queries</div>
+        <div class="topbar-stat ctx" id="statCtx" style="display:none">✨ 0 context</div>
+        <button class="clear-btn" onclick="clearChat()">↺ Clear</button>
+        <div class="status-pill">
+          <div class="status-dot"></div>
+          <span class="status-text">Online</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- CHAT PAGE -->
+    <div class="page active" id="page-chat">
+      <div class="chat-messages" id="chatMessages"></div>
+      <div class="quick-chips" id="quickChips">
+        <div class="chips-label">✨ Popular questions — tap to ask:</div>
+        <div class="chips-wrap" id="chipsWrap"></div>
+      </div>
+      <div id="suggestionsArea" style="display:none">
+        <div class="suggestions-area">
+          <div class="sugg-label">↺ Related questions:</div>
+          <div id="suggBtns"></div>
+        </div>
+      </div>
+      <div class="input-area">
+        <div class="input-wrap">
+          <input id="chatInput" placeholder="Type your question…" onkeydown="if(event.key==='Enter')sendMsg()"/>
+          <button class="send-btn" id="sendBtn" onclick="sendMsg()">➤</button>
+        </div>
+        <div class="context-hint" id="contextHint" style="display:none">
+          ✨ Remembering context from last <span id="ctxCount">0</span> exchange(s)
+        </div>
+      </div>
+    </div>
+
+    <!-- FAQ MANAGER PAGE -->
+    <div class="page" id="page-faqs">
+      <div class="faq-page">
+        <div class="page-header">
+          <div>
+            <div class="page-title">FAQ Manager</div>
+            <div class="page-sub" id="faqCount">0 questions in knowledge base</div>
+          </div>
+          <button class="add-btn" onclick="toggleForm()">＋ Add FAQ</button>
+        </div>
+        <div class="add-form" id="addForm">
+          <div class="form-row">
+            <label class="form-label">Category</label>
+            <select class="form-input" id="fCategory">
+              <option>General</option><option>Account</option><option>Orders</option>
+              <option>Payments</option><option>Shipping</option><option>Technical</option>
+            </select>
+          </div>
+          <div class="form-row">
+            <label class="form-label">Question *</label>
+            <input class="form-input" id="fQuestion" placeholder="Enter the question…"/>
+          </div>
+          <div class="form-row">
+            <label class="form-label">Answer *</label>
+            <textarea class="form-input" id="fAnswer" placeholder="Enter the answer…"></textarea>
+          </div>
+          <div class="form-actions">
+            <button class="cancel-btn" onclick="toggleForm()">Cancel</button>
+            <button class="save-btn" onclick="saveFaq()">✓ Save</button>
+          </div>
+        </div>
+        <div class="search-wrap">
+          <span style="color:#94a3b8;font-size:14px">🔍</span>
+          <input id="faqSearch" placeholder="Search FAQs…" oninput="renderFaqList()"/>
+        </div>
+        <div id="faqList"></div>
+      </div>
+    </div>
+
+    <!-- ANALYTICS PAGE -->
+    <div class="page" id="page-analytics">
+      <div class="analytics-page">
+        <div class="page-header">
+          <div>
+            <div class="page-title">Analytics</div>
+            <div class="page-sub">Session insights, FAQ performance & user feedback</div>
+          </div>
+        </div>
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-icon" style="background:#dbeafe">📈</div>
+            <div class="stat-label">Total queries</div>
+            <div class="stat-val" id="aTotal">0</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon" style="background:#dcfce7">✅</div>
+            <div class="stat-label">Matched</div>
+            <div class="stat-val" id="aMatched">0</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon" style="background:#fef3c7">⚡</div>
+            <div class="stat-label">Avg confidence</div>
+            <div class="stat-val" id="aConf">—</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon" style="background:#f3e8ff">😊</div>
+            <div class="stat-label">Satisfaction</div>
+            <div class="stat-val" id="aSatisf">—</div>
+            <div class="stat-sub" id="aSatisfSub">No ratings yet</div>
+          </div>
+        </div>
+        <div class="progress-card" id="matchRateCard" style="display:none">
+          <div class="progress-top">
+            <span class="progress-lbl">Match rate</span>
+            <span class="progress-pct" id="matchRatePct" style="color:#3b82f6"></span>
+          </div>
+          <div class="progress-track"><div class="progress-bar" id="matchRateBar" style="background:#3b82f6"></div></div>
+          <div class="progress-sub" id="matchRateSub"></div>
+        </div>
+        <div class="progress-card" id="satisfCard" style="display:none">
+          <div class="progress-top">
+            <span class="progress-lbl">User satisfaction</span>
+            <span class="progress-pct" id="satisfPct" style="color:#3b82f6"></span>
+          </div>
+          <div class="progress-track"><div class="progress-bar" id="satisfBar" style="background:#3b82f6"></div></div>
+          <div class="progress-sub" id="satisfSub"></div>
+        </div>
+        <div class="chart-card">
+          <div class="chart-title">Most asked FAQs</div>
+          <div id="topChart"><div style="font-size:12px;color:#94a3b8;padding:8px 0">Start chatting to see data.</div></div>
+        </div>
+        <div class="two-col">
+          <div class="chart-card">
+            <div class="chart-title">Match breakdown</div>
+            <div class="mini-pie" id="matchPie"><div style="font-size:12px;color:#4b5563">No data yet</div></div>
+          </div>
+          <div class="chart-card">
+            <div class="chart-title">Feedback breakdown</div>
+            <div class="mini-pie" id="feedbackPie"><div style="font-size:12px;color:#4b5563">No ratings yet</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+var faqs=[
+  {id:'1',q:'What is your return policy?',a:'We offer a 30-day hassle-free return policy. Items must be unused and in original packaging. Contact support to initiate a return.',cat:'Orders',asks:0,helpful:0,notHelpful:0},
+  {id:'2',q:'How do I reset my password?',a:'Go to the login page and click "Forgot Password". Enter your registered email — we\'ll send a reset link within 2 minutes.',cat:'Account',asks:0,helpful:0,notHelpful:0},
+  {id:'3',q:'What if I forgot my email too?',a:'Contact our support team with your registered phone number or order ID for identity verification and we\'ll help you recover access.',cat:'Account',asks:0,helpful:0,notHelpful:0},
+  {id:'4',q:'What payment methods do you accept?',a:'We accept Visa, MasterCard, American Express, PayPal, UPI, and net banking. All transactions are SSL-encrypted.',cat:'Payments',asks:0,helpful:0,notHelpful:0},
+  {id:'5',q:'How long does shipping take?',a:'Standard shipping: 5–7 business days. Express shipping (1–2 days) is available at checkout for an additional fee.',cat:'Shipping',asks:0,helpful:0,notHelpful:0},
+  {id:'6',q:'Can I track my order?',a:'Yes! Once your order ships you\'ll receive a tracking number via email. Also check "My Orders" in your account dashboard.',cat:'Orders',asks:0,helpful:0,notHelpful:0},
+  {id:'7',q:'How do I contact customer support?',a:'Live chat (Mon–Fri 9am–6pm), email support@example.com, or call +1-800-555-0199.',cat:'General',asks:0,helpful:0,notHelpful:0},
+  {id:'8',q:'Is my personal data safe?',a:'Yes. We comply with GDPR & CCPA. Your data is encrypted at rest and in transit and is never sold to third parties.',cat:'Technical',asks:0,helpful:0,notHelpful:0},
+  {id:'9',q:'Do you offer student discounts?',a:'Yes! Students get 20% off with a valid .edu email. Apply code STUDENT20 at checkout after email verification.',cat:'General',asks:0,helpful:0,notHelpful:0},
+  {id:'10',q:'How do I cancel my order?',a:'Cancel order: Orders can be cancelled within 1 hour of placement via "My Orders". To cancel, select cancel order. After that, contact support.',cat:'Orders',asks:0,helpful:0,notHelpful:0},
+  {id:'11',q:'What is the refund timeline?',a:'Refund timeline: Refunds and money back process within 5–7 business days after we receive the return. Credit card refunds may take an additional 2–3 days.',cat:'Payments',asks:0,helpful:0,notHelpful:0},
+];
+var CAT_RELATED={Account:['Account','Technical'],Orders:['Orders','Shipping'],Shipping:['Shipping','Orders'],Payments:['Payments','Orders'],Technical:['Technical','Account'],General:['General']};
+var analytics={total:0,matched:0,unmatched:0,confScores:[],topQ:{},feedbackTotal:0,feedbackHelpful:0};
+var context=[],msgId=1,chatHistory=[],editingId=null;
+var STOP=new Set(['a','an','the','is','are','do','does','how','what','when','where','why','can','i','my','me','you','your','we','it','this','that','to','of','in','on','for','and','or','be','have','with','was','will','if','also','get','got','did','has']);
+
+function tok(t){return t.toLowerCase().replace(/[^a-z0-9 ]/g,'').split(/\s+/).filter(function(w){return w.length>1&&!STOP.has(w);})}
+function cos(a,b){var all=[...new Set([...a,...b])],va=all.map(function(w){return a.filter(function(x){return x===w;}).length;}),vb=all.map(function(w){return b.filter(function(x){return x===w;}).length;});var dot=va.reduce(function(s,v,i){return s+v*vb[i];},0),na=Math.sqrt(va.reduce(function(s,v){return s+v*v;},0)),nb=Math.sqrt(vb.reduce(function(s,v){return s+v*v;},0));return(na&&nb)?dot/(na*nb):0;}
+
+function findBest(q){
+  var qt=tok(q);
+  // Only use context for very short follow-ups (<=2 meaningful words)
+  var isFollowUp=qt.length<=1&&context.length>0;
+  if(isFollowUp)qt=tok(context[context.length-1].q+' '+q);
+  // Score WITHOUT any category boost — let cosine similarity decide
+  var scores=faqs.map(function(f,i){var s=cos(qt,tok(f.q+' '+f.a));return{i:i,s:s};});
+  scores.sort(function(a,b){return b.s-a.s;});
+  var best=scores[0],matched=best.s>0.1;
+  var relCats=matched?(CAT_RELATED[faqs[best.i].cat]||['General']):['General'];
+  var sugg=faqs.filter(function(f,i){return i!==best.i&&relCats.indexOf(f.cat)!==-1;}).slice(0,3).map(function(f){return f.q;});
+  if(!matched)return{answer:"I couldn't find a good match. Try rephrasing or pick from the suggestions below.",faqId:null,faqQ:null,cat:null,confidence:best.s,matched:false,suggestions:faqs.slice(0,4).map(function(f){return f.q;}),ctx:false};
+  faqs[best.i].asks++;
+  return{answer:faqs[best.i].a,faqId:faqs[best.i].id,faqQ:faqs[best.i].q,cat:faqs[best.i].cat,confidence:best.s,matched:true,suggestions:sugg,ctx:isFollowUp};
+}
+
+function sendMsg(text){
+  var q=(text||document.getElementById('chatInput').value).trim();if(!q)return;
+  document.getElementById('chatInput').value='';
+  document.getElementById('quickChips').style.display='none';
+  document.getElementById('suggestionsArea').style.display='none';
+  addUserMsg(q);chatHistory.push(q);renderHistory();
+  analytics.total++;document.getElementById('statQueries').textContent='💬 '+analytics.total+' quer'+(analytics.total===1?'y':'ies');
+  var te=addTyping();
+  document.getElementById('sendBtn').disabled=true;document.getElementById('chatInput').disabled=true;
+  setTimeout(function(){
+    te.remove();document.getElementById('sendBtn').disabled=false;document.getElementById('chatInput').disabled=false;document.getElementById('chatInput').focus();
+    var r=findBest(q);addBotMsg(r,q);
+    if(r.matched){context.push({q:r.faqQ,a:r.answer,cat:r.cat});if(context.length>3)context.shift();}
+    if(r.suggestions&&r.suggestions.length){
+      document.getElementById('suggBtns').innerHTML=r.suggestions.map(function(s){return'<button class="sugg" onclick="sendMsg(\''+s.replace(/'/g,"\\'")+'\')">'+( s.length>42?s.slice(0,42)+'…':s)+'</button>';}).join('');
+      document.getElementById('suggestionsArea').style.display='block';
+    }
+    if(context.length>0){document.getElementById('contextHint').style.display='flex';document.getElementById('ctxCount').textContent=context.length;document.getElementById('statCtx').style.display='flex';document.getElementById('statCtx').textContent='✨ '+context.length+' context';}
+    analytics.confScores.push(Math.round(r.confidence*100));
+    if(r.matched){analytics.matched++;analytics.topQ[r.faqQ]=(analytics.topQ[r.faqQ]||0)+1;}else{analytics.unmatched++;}
+    updateAnalytics();
+  },700+Math.random()*400);
+}
+
+function addUserMsg(t){var el=document.createElement('div');el.className='msg user';el.innerHTML='<div class="msg-avatar user">U</div><div class="msg-body"><div class="bubble user">'+esc(t)+'</div></div>';document.getElementById('chatMessages').appendChild(el);scrollB();}
+
+function addBotMsg(r,origQ){
+  var id=msgId++,pct=r.confidence>1?Math.round(r.confidence):Math.round(r.confidence*100),cg=pct>=30?'good':'',catTag=r.cat?'<span class="cat-tag cat-'+r.cat+'">'+r.cat+'</span>':'';
+  var ctxBadge=r.ctx?'<div class="context-badge">✨ <span>Context-aware reply</span></div>':'';
+  var fbHtml=r.matched?'<div class="feedback-row" id="fb-'+id+'"><span class="feedback-label">Was this helpful?</span><button class="fb-btn up" onclick="giveFb('+id+',\''+ea(r.faqQ)+'\',\''+ea(origQ)+'\',true)">👍 Yes</button><button class="fb-btn down" onclick="giveFb('+id+',\''+ea(r.faqQ)+'\',\''+ea(origQ)+'\',false)">👎 No</button></div>':'';
+  var el=document.createElement('div');el.className='msg';el.id='msg-'+id;
+  el.innerHTML='<div class="msg-avatar bot">🤖</div><div class="msg-body">'+ctxBadge+'<div class="bubble bot">'+esc(r.answer)+'</div><div class="msg-meta"><span class="conf-badge '+cg+'">'+(pct>=30?'✓':'?')+' '+pct+'% match</span>'+catTag+'</div>'+fbHtml+'</div>';
+  document.getElementById('chatMessages').appendChild(el);scrollB();
+}
+
+function addTyping(){var el=document.createElement('div');el.className='typing-msg';el.innerHTML='<div class="msg-avatar bot">🤖</div><div class="typing-bubble"><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>';document.getElementById('chatMessages').appendChild(el);scrollB();return el;}
+
+function giveFb(id,faqQ,q,helpful){
+  var fb=document.getElementById('fb-'+id);if(!fb)return;
+  analytics.feedbackTotal++;
+  var idx=faqs.findIndex(function(f){return f.q===faqQ;});
+  if(helpful){analytics.feedbackHelpful++;if(idx!==-1)faqs[idx].helpful++;}else{if(idx!==-1)faqs[idx].notHelpful++;}
+  fb.innerHTML='<span class="fb-given">'+(helpful?'👍 Marked helpful':'👎 Marked not helpful')+'</span>';
+  toast(helpful?'👍 Thanks for the feedback!':'👎 Got it — we\'ll improve!');updateAnalytics();
+}
+
+function clearChat(){document.getElementById('chatMessages').innerHTML='';context=[];document.getElementById('contextHint').style.display='none';document.getElementById('statCtx').style.display='none';document.getElementById('suggestionsArea').style.display='none';document.getElementById('quickChips').style.display='block';addWelcome();}
+
+function addWelcome(){var el=document.createElement('div');el.className='msg';el.innerHTML='<div class="msg-avatar bot">🤖</div><div class="msg-body"><div class="bubble bot">Hi! I\'m your FAQ assistant. I remember conversation context — feel free to ask natural follow-up questions! 😊</div></div>';document.getElementById('chatMessages').appendChild(el);}
+
+function scrollB(){var c=document.getElementById('chatMessages');c.scrollTop=c.scrollHeight;}
+
+function renderFaqList(){
+  var s=document.getElementById('faqSearch').value.toLowerCase();
+  var list=faqs.filter(function(f){return!s||f.q.toLowerCase().includes(s)||f.a.toLowerCase().includes(s);});
+  document.getElementById('faqCount').textContent=faqs.length+' questions in knowledge base';
+  if(!list.length){document.getElementById('faqList').innerHTML='<p style="font-size:13px;color:#6b7280;padding:24px 0;text-align:center;font-family:Poppins,sans-serif">No FAQs found.</p>';return;}
+  document.getElementById('faqList').innerHTML=list.map(function(f){return'<div class="faq-card"><div class="faq-card-top"><div><span class="cat-tag cat-'+f.cat+'" style="margin-bottom:7px;display:inline-block">'+f.cat+'</span><div class="faq-q">'+esc(f.q)+'</div></div><div class="faq-actions"><button class="icon-btn" onclick="startEdit(\''+f.id+'\')" title="Edit">✏️</button><button class="icon-btn del" onclick="deleteFaq(\''+f.id+'\')" title="Delete">🗑</button></div></div><div class="faq-a">'+esc(f.a)+'</div><div class="faq-stats"><span>📌 Asked '+f.asks+'×</span><span>👍 '+f.helpful+'</span><span>👎 '+f.notHelpful+'</span></div></div>';}).join('');
+}
+
+function toggleForm(){var f=document.getElementById('addForm');var o=f.classList.contains('open');f.classList.toggle('open');if(!o){document.getElementById('fQuestion').value='';document.getElementById('fAnswer').value='';document.getElementById('fCategory').value='General';editingId=null;}}
+
+function startEdit(id){var f=faqs.find(function(x){return x.id===id;});if(!f)return;editingId=id;document.getElementById('fQuestion').value=f.q;document.getElementById('fAnswer').value=f.a;document.getElementById('fCategory').value=f.cat;document.getElementById('addForm').classList.add('open');document.getElementById('fQuestion').focus();}
+
+function saveFaq(){
+  var q=document.getElementById('fQuestion').value.trim(),a=document.getElementById('fAnswer').value.trim(),cat=document.getElementById('fCategory').value;
+  if(!q||!a){toast('⚠️ Question and answer are required');return;}
+  if(editingId){var i=faqs.findIndex(function(f){return f.id===editingId;});if(i!==-1){faqs[i].q=q;faqs[i].a=a;faqs[i].cat=cat;}toast('✓ FAQ updated');}
+  else{faqs.push({id:Date.now().toString(),q:q,a:a,cat:cat,asks:0,helpful:0,notHelpful:0});toast('✓ FAQ added');}
+  toggleForm();renderFaqList();refreshChips();
+}
+
+function deleteFaq(id){if(!confirm('Delete this FAQ?'))return;faqs=faqs.filter(function(f){return f.id!==id;});renderFaqList();toast('🗑 FAQ deleted');}
+
+function updateAnalytics(){
+  var t=analytics.total,m=analytics.matched,u=analytics.unmatched,fT=analytics.feedbackTotal,fH=analytics.feedbackHelpful;
+  var avg=analytics.confScores.length?Math.round(analytics.confScores.reduce(function(a,b){return a+b;},0)/analytics.confScores.length):0;
+  var mr=t?Math.round((m/t)*100):0,sr=fT?Math.round((fH/fT)*100):0;
+  document.getElementById('aTotal').textContent=t;document.getElementById('aMatched').textContent=m;
+  document.getElementById('aConf').textContent=avg?avg+'%':'—';document.getElementById('aSatisf').textContent=fT?sr+'%':'—';
+  document.getElementById('aSatisfSub').textContent=fT?fT+' rating'+(fT===1?'':'s'):'No ratings yet';
+  if(t>0){document.getElementById('matchRateCard').style.display='block';document.getElementById('matchRatePct').textContent=mr+'%';document.getElementById('matchRateBar').style.width=mr+'%';document.getElementById('matchRateSub').textContent=m+' of '+t+' queries matched an FAQ';}
+  if(fT>0){document.getElementById('satisfCard').style.display='block';document.getElementById('satisfPct').textContent=sr+'%';document.getElementById('satisfBar').style.width=sr+'%';document.getElementById('satisfSub').textContent=fH+' helpful · '+(fT-fH)+' not helpful';}
+  var topArr=Object.keys(analytics.topQ).map(function(k){return{q:k,c:analytics.topQ[k]};}).sort(function(a,b){return b.c-a.c;}).slice(0,6);
+  var maxC=topArr.length?topArr[0].c:1;
+  document.getElementById('topChart').innerHTML=topArr.length?topArr.map(function(item){var l=item.q.length>28?item.q.slice(0,28)+'…':item.q;return'<div class="bar-row"><div class="bar-lbl">'+esc(l)+'</div><div class="bar-track"><div class="bar-fill" style="width:'+Math.round((item.c/maxC)*100)+'%"></div></div><div class="bar-count">'+item.c+'</div></div>';}).join(''):'<div style="font-size:12px;color:#4b5563">Start chatting to see data.</div>';
+  if(t>0)document.getElementById('matchPie').innerHTML='<div class="pie-item"><div class="pie-dot" style="background:#3b82f6"></div>Matched: '+m+'</div><div class="pie-item"><div class="pie-dot" style="background:#f87171"></div>Unmatched: '+u+'</div>';
+  if(fT>0)document.getElementById('feedbackPie').innerHTML='<div class="pie-item"><div class="pie-dot" style="background:#3b82f6"></div>Helpful: '+fH+'</div><div class="pie-item"><div class="pie-dot" style="background:#4b5563"></div>Not helpful: '+(fT-fH)+'</div>';
+}
+
+function refreshChips(){
+  document.getElementById('chipsWrap').innerHTML=faqs.slice(0,6).map(function(f){return'<button class="chip cat-tag cat-'+f.cat+'" onclick="sendMsg(\''+f.q.replace(/'/g,"\\'")+'\')">'+( f.q.length>40?f.q.slice(0,40)+'…':f.q)+'</button>';}).join('');
+}
+
+function switchPage(id,el){
+  document.querySelectorAll('.page').forEach(function(p){p.classList.remove('active');});
+  document.querySelectorAll('.nav-item').forEach(function(n){n.classList.remove('active');});
+  document.querySelectorAll('.nav-arrow').forEach(function(a){a.style.display='none';});
+  document.getElementById('page-'+id).classList.add('active');el.classList.add('active');document.getElementById('arr-'+id).style.display='inline';
+  var titles={chat:'Chat',faqs:'FAQ Manager',analytics:'Analytics'};
+  var subs={chat:'Context-aware · Feedback · Smart suggestions',faqs:'Manage your knowledge base',analytics:'Session insights, FAQ performance & user feedback'};
+  document.getElementById('pageTitle').textContent=titles[id];document.getElementById('pageSub').textContent=subs[id];
+  if(id==='faqs')renderFaqList();if(id==='analytics')updateAnalytics();
+}
+
+function renderHistory(){document.getElementById('historyList').innerHTML=chatHistory.slice(-10).reverse().map(function(s){return'<div class="history-item"><span class="history-dot">●</span><span style="overflow:hidden;text-overflow:ellipsis">'+(s.length>26?s.slice(0,26)+'…':s)+'</span></div>';}).join('');}
+
+function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+function ea(s){return String(s||'').replace(/'/g,"&#39;").replace(/"/g,"&quot;");}
+function toast(msg){var t=document.createElement('div');t.className='toast';t.textContent=msg;document.body.appendChild(t);setTimeout(function(){t.remove();},2200);}
+
+(function(){
+  var h=new Date().getHours();
+  document.getElementById('greetTime').textContent=h<12?'Good morning':h<17?'Good afternoon':'Good evening';
+  addWelcome();refreshChips();document.getElementById('chatInput').focus();
+})();
+</script>
+
+<script>
+// ── API Configuration ──────────────────────────────────────────────
+const API = {
+  BASE: window.location.origin + '/api',
+  async get(path) {
+    const r = await fetch(this.BASE + path);
+    return r.json();
+  },
+  async post(path, body) {
+    const r = await fetch(this.BASE + path, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(body)
+    });
+    return r.json();
+  },
+  async put(path, body) {
+    const r = await fetch(this.BASE + path, {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(body)
+    });
+    return r.json();
+  },
+  async delete(path) {
+    const r = await fetch(this.BASE + path, { method: 'DELETE' });
+    return r.json();
+  }
+};
+
+// ── Load FAQs from backend on boot ────────────────────────────────
+async function loadFaqsFromAPI() {
+  try {
+    const res = await API.get('/faqs');
+    if (res.success) {
+      faqs = res.data;
+      renderFaqList();
+      refreshChips();
+    }
+  } catch(e) {
+    console.warn('Backend not available, using local data:', e.message);
+  }
+}
+
+// ── Override sendMsg to use backend chat API ───────────────────────
+const _originalSendMsg = sendMsg;
+async function sendMsg(text) {
+  var q = (text || document.getElementById('chatInput').value).trim();
+  if (!q) return;
+  document.getElementById('chatInput').value = '';
+  document.getElementById('quickChips').style.display = 'none';
+  document.getElementById('suggestionsArea').style.display = 'none';
+  addUserMsg(q); chatHistory.push(q); renderHistory();
+  analytics.total++;
+  document.getElementById('statQueries').textContent = '💬 ' + analytics.total + ' quer' + (analytics.total === 1 ? 'y' : 'ies');
+  var te = addTyping();
+  document.getElementById('sendBtn').disabled = true;
+  document.getElementById('chatInput').disabled = true;
+
+  try {
+    const res = await API.post('/chat/query', { question: q, context });
+    te.remove();
+    document.getElementById('sendBtn').disabled = false;
+    document.getElementById('chatInput').disabled = false;
+    document.getElementById('chatInput').focus();
+
+    if (res.success) {
+      const r = res.data;
+      addBotMsg(r, q);
+      if (r.matched) { context.push({ q: r.faqQ, a: r.answer, cat: r.cat }); if (context.length > 3) context.shift(); }
+      if (r.suggestions && r.suggestions.length) {
+        document.getElementById('suggBtns').innerHTML = r.suggestions.map(s =>
+          '<button class="sugg" onclick="sendMsg('' + (s.q || s).replace(/'/g, "\'") + '')">' +
+          ((s.q || s).length > 42 ? (s.q || s).slice(0, 42) + '…' : (s.q || s)) + '</button>'
+        ).join('');
+        document.getElementById('suggestionsArea').style.display = 'block';
+      }
+      if (context.length > 0) {
+        document.getElementById('contextHint').style.display = 'flex';
+        document.getElementById('ctxCount').textContent = context.length;
+        document.getElementById('statCtx').style.display = 'flex';
+        document.getElementById('statCtx').textContent = '✨ ' + context.length + ' context';
+      }
+      analytics.confScores.push(r.confidence || 0);
+      if (r.matched) { analytics.matched++; analytics.topQ[r.faqQ] = (analytics.topQ[r.faqQ] || 0) + 1; }
+      else { analytics.unmatched++; }
+      updateAnalytics();
+    }
+  } catch (e) {
+    te.remove();
+    document.getElementById('sendBtn').disabled = false;
+    document.getElementById('chatInput').disabled = false;
+    toast('⚠️ Could not reach server — check backend is running');
+  }
+}
+
+// ── Override saveFaq to use backend API ───────────────────────────
+async function saveFaq() {
+  var q = document.getElementById('fQuestion').value.trim();
+  var a = document.getElementById('fAnswer').value.trim();
+  var cat = document.getElementById('fCategory').value;
+  if (!q || !a) { toast('⚠️ Question and answer are required'); return; }
+
+  try {
+    let res;
+    if (editingId) {
+      res = await API.put('/faqs/' + editingId, { q, a, cat });
+      if (res.success) {
+        const i = faqs.findIndex(f => f.id === editingId);
+        if (i !== -1) faqs[i] = res.data;
+        toast('✓ FAQ updated');
+      }
+    } else {
+      res = await API.post('/faqs', { q, a, cat });
+      if (res.success) { faqs.push(res.data); toast('✓ FAQ added'); }
+    }
+    toggleForm(); renderFaqList(); refreshChips();
+  } catch (e) { toast('⚠️ Save failed — check backend'); }
+}
+
+// ── Override deleteFaq to use backend API ─────────────────────────
+async function deleteFaq(id) {
+  if (!confirm('Delete this FAQ?')) return;
+  try {
+    const res = await API.delete('/faqs/' + id);
+    if (res.success) { faqs = faqs.filter(f => f.id !== id); renderFaqList(); toast('🗑 FAQ deleted'); }
+  } catch (e) { toast('⚠️ Delete failed — check backend'); }
+}
+
+// ── Init ──────────────────────────────────────────────────────────
+document.addEventListener('DOMContentLoaded', () => {
+  loadFaqsFromAPI();
+});
+</script>
+
+</body>
+</html>
