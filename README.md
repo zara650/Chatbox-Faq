@@ -9,7 +9,6 @@
 
 <br/>
 
-<img src="https://capsule-render.vercel.app/api?type=circle&color=0f172a,1e293b,3b82f6&height=150&text=FAQ.ai&fontColor=60a5fa&fontSize=36&fontAlignY=50&animation=fadeIn&desc=AI%20Chatbot&descAlignY=68&descSize=14&descColor=93c5fd" />
 
 <br/>
 
