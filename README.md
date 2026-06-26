@@ -4,11 +4,9 @@
 
 <br/>
 
-<img src="https://capsule-render.vercel.app/api?type=waving&color=0f172a,1e293b,3b82f6&height=200&section=header&text=FAQ.ai&fontSize=70&fontColor=ffffff&fontAlignY=35&desc=AI-Powered%20FAQ%20Chatbot%20Dashboard&descSize=20&descAlignY=60&descColor=93c5fd&animation=fadeIn" width="100%"/>
+<img src="https://capsule-render.vercel.app/api?type=waving&color=timeFeadient&height=200&section=header&text=FAQ.ai&fontSize=70&fontColor=ffffff&fontAlignY=35&desc=AI-Powered%20FAQ%20Chatbot%20Dashboard&descSize=20&descAlignY=60&descColor=93c5fd&animation=fadeIn" width="100%"/>
 
 <br/>
-
-# FAQ.ai — AI-Powered FAQ Chatbot Dashboard
 
 **Production-level intelligent FAQ chatbot with context awareness, NLP matching,**  
 **real-time feedback system, and analytics dashboard.**
