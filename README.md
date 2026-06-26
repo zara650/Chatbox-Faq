@@ -6,12 +6,14 @@
 
 <!-- FAQ.ai Logo — pure text + emoji, always renders on GitHub -->
 <h1>🤖</h1>
-<h3><code>FAQ . ai</code></h3>
+<h1><code>? FAQ.ai ?</code></h1>
 <img src="https://img.shields.io/badge/Intelligent%20Support%20System-0f172a?style=flat-square&labelColor=3b82f6&color=0f172a" />
 
 <br/>
 
-# FAQ.ai — AI-Powered FAQ Chatbot Dashboard
+# FAQ.ai
+
+[![Live Demo](https://img.shields.io/badge/LIVE_DEMO-chatbox--faq.onrender.com-22c55e?style=for-the-badge)](https://chatbox-faq.onrender.com) — AI-Powered FAQ Chatbot Dashboard
 
 **Production-level intelligent FAQ chatbot with context awareness, NLP matching,**  
 **real-time feedback system, and analytics dashboard.**
@@ -637,3 +639,4 @@ quadrantChart
 ![MongoDB](https://img.shields.io/badge/DB-MongoDB-47A248?style=flat-square&logo=mongodb)
 
 </div>
+
