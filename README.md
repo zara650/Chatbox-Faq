@@ -1,495 +1,636 @@
 <div align="center">
 
-# 🚨 Accident Alert System
+<img src="https://readme-typing-svg.demolab.com?font=Poppins&weight=700&size=13&duration=3000&pause=1500&color=3B82F6&center=true&vCenter=true&width=600&lines=INITIALIZING+FAQ.AI+CORE...;LOADING+NLP+ENGINE...;CONNECTING+KNOWLEDGE+BASE...;CONTEXT+MEMORY+ONLINE...;SYSTEM+READY" alt="boot sequence" />
 
-### Real-Time Emergency Detection & Automated Response Platform
+<br/>
 
-*Detect. Alert. Respond. Save Lives — in Seconds.*
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0f172a,1e293b,3b82f6&height=200&section=header&text=FAQ.ai&fontSize=70&fontColor=ffffff&fontAlignY=35&desc=AI-Powered%20FAQ%20Chatbot%20Dashboard&descSize=20&descAlignY=60&descColor=93c5fd&animation=fadeIn" width="100%"/>
 
----
+<br/>
 
-![Node.js](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white)
-![Express](https://img.shields.io/badge/Express-000000?style=for-the-badge&logo=express&logoColor=white)
-![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
-![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
-![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
-![Twilio](https://img.shields.io/badge/Twilio-F22F46?style=for-the-badge&logo=twilio&logoColor=white)
-![Google Maps](https://img.shields.io/badge/Google_Maps-4285F4?style=for-the-badge&logo=googlemaps&logoColor=white)
+# FAQ.ai — AI-Powered FAQ Chatbot Dashboard
 
-![Status](https://img.shields.io/badge/Status-Active-brightgreen?style=for-the-badge)
-![Version](https://img.shields.io/badge/Version-1.0.0-blue?style=for-the-badge)
-![License](https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge)
-![PRs Welcome](https://img.shields.io/badge/PRs-Welcome-orange?style=for-the-badge)
+**Production-level intelligent FAQ chatbot with context awareness, NLP matching,**  
+**real-time feedback system, and analytics dashboard.**
+
+<br/>
+
+<!-- Tech stack badges -->
+<img src="https://img.shields.io/badge/HTML5-Standalone-E34F26?style=for-the-badge&logo=html5&logoColor=white"/>
+<img src="https://img.shields.io/badge/CSS3-Poppins_Theme-1572B6?style=for-the-badge&logo=css3&logoColor=white"/>
+<img src="https://img.shields.io/badge/JavaScript-Vanilla_ES6-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black"/>
+<img src="https://img.shields.io/badge/NLP-Cosine_Similarity-3B82F6?style=for-the-badge&logo=data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIGZpbGw9IiMzYjgyZjYiIHJ4PSI0Ii8+PC9zdmc+&logoColor=white"/>
+<img src="https://img.shields.io/badge/Node.js-Backend-339933?style=for-the-badge&logo=nodedotjs&logoColor=white"/>
+<img src="https://img.shields.io/badge/Python-Flask_NLP-3776AB?style=for-the-badge&logo=python&logoColor=white"/>
+
+<br/><br/>
+
+<img src="https://img.shields.io/badge/React-Frontend-61DAFB?style=for-the-badge&logo=react&logoColor=black"/>
+<img src="https://img.shields.io/badge/MongoDB-Database-47A248?style=for-the-badge&logo=mongodb&logoColor=white"/>
+<img src="https://img.shields.io/badge/Tailwind_CSS-Styling-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white"/>
+<img src="https://img.shields.io/badge/Context_Aware-Memory_System-8B5CF6?style=for-the-badge"/>
+<img src="https://img.shields.io/badge/Feedback_System-Analytics-10B981?style=for-the-badge"/>
+
+<br/>
 
 </div>
 
 ---
 
-## 📌 Overview
+## Table of Contents
 
-**Accident Alert System** is a production-grade emergency detection and response platform that automatically triggers multi-channel notifications the moment an accident is reported. By integrating **real-time location data**, **WhatsApp alerts via Twilio**, and **Google Maps geolocation**, it ensures emergency contacts and responders are notified within seconds — not minutes.
-
-> Built for speed. Engineered for reliability. Designed to save lives.
-
----
-
-## 🌐 Live Demo
-
-| Resource | Link |
-|---|---|
-| 🖥️ Live Application | `https://accident-alert.yourdomain.com` |
-| 📡 API Base URL | `https://api.accident-alert.yourdomain.com/v1` |
-| 📖 API Documentation | `https://docs.accident-alert.yourdomain.com` |
-| 🧪 Postman Collection | [![Run in Postman](https://img.shields.io/badge/Run_in-Postman-orange?style=flat-square&logo=postman)](https://postman.co/your-collection) |
-
----
-
-## ✨ Features
-
-### 🧠 Core Logic
-
-- **Instant Alert Triggering** — Single-tap SOS dispatches alerts to all registered emergency contacts simultaneously
-- **GPS Precision Tracking** — Captures real-time latitude/longitude coordinates at the moment of incident
-- **Smart Escalation Engine** — If no acknowledgment within configurable timeout, auto-escalates to secondary contacts
-- **Response Loop** — Tracks whether recipients have acknowledged the alert; re-notifies on silence
-- **Idempotent Alert Deduplication** — Prevents duplicate alerts from rapid repeated triggers
-
-### 🎨 Frontend Experience
-
-- **One-Tap SOS Interface** — Panic-optimized UI with large, accessible emergency trigger button
-- **Live Map View** — Embedded Google Maps displaying incident location in real time
-- **Alert Status Dashboard** — Visual confirmation of alert delivery and acknowledgment status
-- **Responsive Design** — Fully optimized for mobile-first emergency use cases
-- **Minimal Interaction Model** — Designed for high-stress scenarios; zero cognitive overhead
-
-### ⚙️ Backend & Infrastructure
-
-- **RESTful API** — Clean, versioned Express.js endpoints for all alert operations
-- **Twilio WhatsApp Integration** — Programmatic WhatsApp message dispatch with delivery receipts
-- **Webhook Processing** — Handles inbound Twilio status callbacks for real-time delivery tracking
-- **Google Maps Reverse Geocoding** — Converts raw coordinates to human-readable addresses
-- **Structured JSON Logging** — Full audit trail for every alert lifecycle event
-- **Rate Limiting & Abuse Prevention** — Protects endpoints from misuse without blocking genuine emergencies
+- [Project Overview](#project-overview)
+- [System Architecture](#system-architecture)
+- [Tech Stack](#tech-stack)
+- [Features](#features)
+- [NLP Pipeline](#nlp-pipeline)
+- [Context Awareness System](#context-awareness-system)
+- [Feedback System](#feedback-system)
+- [Analytics Dashboard](#analytics-dashboard)
+- [File Structure](#file-structure)
+- [Setup Instructions](#setup-instructions)
+- [API Reference](#api-reference)
+- [FAQ Dataset](#faq-dataset)
+- [Screenshots](#screenshots)
 
 ---
 
-## 🏗️ System Architecture
+## Project Overview
+
+FAQ.ai is a production-level intelligent FAQ chatbot dashboard built as **Task 2** of the CodeAlpha AI Internship. It goes far beyond a basic chatbot — featuring NLP-powered matching, conversation context memory, smart pre-type suggestions, user feedback collection, and a full analytics dashboard.
+
+```mermaid
+mindmap
+  root((FAQ.ai))
+    Chat Engine
+      NLP Preprocessing
+      Cosine Similarity
+      Context Memory
+      Typing Animation
+      Confidence Scores
+    Smart UI
+      Dark Blue Theme
+      Poppins Font
+      Category Tags
+      Chat Bubbles
+      Suggestions Chips
+    FAQ Manager
+      Add / Edit / Delete
+      Category Filter
+      Search
+      Feedback Stats
+    Analytics
+      Match Rate Bar
+      Satisfaction Score
+      Top FAQs Chart
+      Pie Breakdowns
+    Backend
+      Node.js Express
+      MongoDB
+      Python Flask
+      NLTK NLP
+```
+
+---
+
+## System Architecture
 
 ```mermaid
 graph TB
-    subgraph CLIENT["🖥️ Client Layer"]
-        UI[Web Interface / Mobile Browser]
-        GPS[GPS / Location API]
+    subgraph CLIENT["FRONTEND — React + Tailwind"]
+        direction TB
+        CHAT["ChatPage\nConversation UI"]
+        FAQ["FAQManagerPage\nCRUD Interface"]
+        ANA["AnalyticsPage\nRecharts Dashboards"]
+        SIDE["Sidebar\nNavigation + History"]
+        CHAT --> SIDE
+        FAQ --> SIDE
+        ANA --> SIDE
     end
 
-    subgraph API["⚙️ API Layer (Express.js)"]
-        ROUTER[Route Handler]
-        ALERT[Alert Controller]
-        WEBHOOK[Webhook Controller]
-        STATUS[Status Controller]
+    subgraph NODE["BACKEND — Node.js + Express"]
+        direction TB
+        CHATRT["POST /api/chat\nQuery Processing"]
+        FAQRT["GET/POST/PUT/DELETE /api/faqs\nFAQ CRUD"]
+        FBRT["POST /api/chat/feedback\nFeedback Store"]
+        SUGG["GET /api/chat/suggestions\nPre-type Chips"]
+        DB[("MongoDB\nFAQ Collection")]
+        CHATRT --> DB
+        FAQRT --> DB
+        FBRT --> DB
     end
 
-    subgraph SERVICES["🔧 Service Layer"]
-        TWILIO[Twilio WhatsApp Service]
-        MAPS[Google Maps Service]
-        NOTIFY[Notification Manager]
-        ESCALATION[Escalation Engine]
+    subgraph PYTHON["NLP SERVICE — Python Flask"]
+        direction TB
+        MATCH["POST /match\nBest FAQ Finder"]
+        PRE["Preprocessing\nNLTK Pipeline"]
+        TF["TF-IDF Vectors\nCosine Similarity"]
+        MATCH --> PRE --> TF
     end
 
-    subgraph DATA["🗃️ Data Layer"]
-        DB[(Alert Database)]
-        CACHE[(Response Cache)]
-    end
+    CLIENT <-->|"axios REST"| NODE
+    NODE <-->|"axios timeout 5s"| PYTHON
+    NODE -->|"JS fallback if Python down"| NODE
 
-    subgraph EXTERNAL["🌐 External APIs"]
-        TWILIO_API[Twilio API]
-        GMAPS_API[Google Maps API]
-    end
-
-    UI -->|SOS Trigger + Coords| ROUTER
-    GPS -->|lat/lng| UI
-    ROUTER --> ALERT
-    ROUTER --> WEBHOOK
-    ROUTER --> STATUS
-    ALERT --> NOTIFY
-    ALERT --> MAPS
-    MAPS --> GMAPS_API
-    NOTIFY --> TWILIO
-    TWILIO --> TWILIO_API
-    TWILIO_API -->|Delivery Webhook| WEBHOOK
-    WEBHOOK --> ESCALATION
-    ESCALATION -->|No Ack?| NOTIFY
-    ALERT --> DB
-    STATUS --> CACHE
-    DB --> CACHE
+    style CLIENT fill:#1e293b,stroke:#3b82f6,stroke-width:2px,color:#e2e8f0
+    style NODE fill:#1e3a1e,stroke:#22c55e,stroke-width:2px,color:#e2e8f0
+    style PYTHON fill:#3b1f00,stroke:#f59e0b,stroke-width:2px,color:#e2e8f0
 ```
 
 ---
 
-## 🔄 System Workflow
+## Tech Stack
+
+<div align="center">
+
+<!-- Tech stack SVG cards -->
+<svg width="760" height="90" viewBox="0 0 760 90" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="cardBg" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+    <linearGradient id="blue3d" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#60a5fa"/>
+      <stop offset="100%" stop-color="#1d4ed8"/>
+    </linearGradient>
+    <linearGradient id="green3d" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#4ade80"/>
+      <stop offset="100%" stop-color="#15803d"/>
+    </linearGradient>
+    <linearGradient id="yellow3d" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#fde68a"/>
+      <stop offset="100%" stop-color="#d97706"/>
+    </linearGradient>
+    <linearGradient id="purple3d" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#c4b5fd"/>
+      <stop offset="100%" stop-color="#6d28d9"/>
+    </linearGradient>
+    <linearGradient id="teal3d" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#67e8f9"/>
+      <stop offset="100%" stop-color="#0e7490"/>
+    </linearGradient>
+    <filter id="card-shadow">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000" flood-opacity="0.5"/>
+    </filter>
+  </defs>
+
+  <!-- React -->
+  <rect x="4" y="8" width="134" height="74" rx="10" fill="url(#cardBg)" filter="url(#card-shadow)" stroke="#1d4ed8" stroke-width="1"/>
+  <circle cx="34" cy="35" r="14" fill="url(#blue3d)"/>
+  <text x="34" y="40" text-anchor="middle" font-family="monospace" font-size="10" font-weight="bold" fill="white">Re</text>
+  <text x="58" y="33" font-family="monospace" font-size="11" font-weight="700" fill="#60a5fa">React 18</text>
+  <text x="58" y="48" font-family="monospace" font-size="9" fill="#64748b">Tailwind CSS</text>
+  <text x="58" y="63" font-family="monospace" font-size="8" fill="#475569">Recharts</text>
+
+  <!-- Node.js -->
+  <rect x="148" y="8" width="134" height="74" rx="10" fill="url(#cardBg)" filter="url(#card-shadow)" stroke="#15803d" stroke-width="1"/>
+  <circle cx="178" cy="35" r="14" fill="url(#green3d)"/>
+  <text x="178" y="40" text-anchor="middle" font-family="monospace" font-size="9" font-weight="bold" fill="white">Nd</text>
+  <text x="202" y="33" font-family="monospace" font-size="11" font-weight="700" fill="#4ade80">Node.js</text>
+  <text x="202" y="48" font-family="monospace" font-size="9" fill="#64748b">Express 4.18</text>
+  <text x="202" y="63" font-family="monospace" font-size="8" fill="#475569">REST API</text>
+
+  <!-- Python -->
+  <rect x="292" y="8" width="134" height="74" rx="10" fill="url(#cardBg)" filter="url(#card-shadow)" stroke="#d97706" stroke-width="1"/>
+  <circle cx="322" cy="35" r="14" fill="url(#yellow3d)"/>
+  <text x="322" y="40" text-anchor="middle" font-family="monospace" font-size="10" font-weight="bold" fill="white">Py</text>
+  <text x="346" y="33" font-family="monospace" font-size="11" font-weight="700" fill="#fde68a">Python Flask</text>
+  <text x="346" y="48" font-family="monospace" font-size="9" fill="#64748b">NLTK 3.8</text>
+  <text x="346" y="63" font-family="monospace" font-size="8" fill="#475569">NLP Service</text>
+
+  <!-- MongoDB -->
+  <rect x="436" y="8" width="134" height="74" rx="10" fill="url(#cardBg)" filter="url(#card-shadow)" stroke="#6d28d9" stroke-width="1"/>
+  <circle cx="466" cy="35" r="14" fill="url(#purple3d)"/>
+  <text x="466" y="40" text-anchor="middle" font-family="monospace" font-size="9" font-weight="bold" fill="white">Mg</text>
+  <text x="490" y="33" font-family="monospace" font-size="11" font-weight="700" fill="#c4b5fd">MongoDB</text>
+  <text x="490" y="48" font-family="monospace" font-size="9" fill="#64748b">Mongoose 7</text>
+  <text x="490" y="63" font-family="monospace" font-size="8" fill="#475569">FAQ Storage</text>
+
+  <!-- NLTK NLP -->
+  <rect x="580" y="8" width="176" height="74" rx="10" fill="url(#cardBg)" filter="url(#card-shadow)" stroke="#0e7490" stroke-width="1"/>
+  <circle cx="610" cy="35" r="14" fill="url(#teal3d)"/>
+  <text x="610" y="40" text-anchor="middle" font-family="monospace" font-size="9" font-weight="bold" fill="white">NLP</text>
+  <text x="634" y="33" font-family="monospace" font-size="11" font-weight="700" fill="#67e8f9">Cosine Sim</text>
+  <text x="634" y="48" font-family="monospace" font-size="9" fill="#64748b">TF-IDF Vectors</text>
+  <text x="634" y="63" font-family="monospace" font-size="8" fill="#475569">Lemmatization</text>
+</svg>
+
+</div>
+
+| Layer | Technology | Version | Purpose |
+|:---:|:---|:---:|:---|
+| 🎨 **Frontend** | React + Tailwind CSS | 18.2 | Dashboard UI, chat interface |
+| 🟢 **Backend** | Node.js + Express | 4.18 | REST API, FAQ CRUD, routing |
+| 🐍 **NLP Service** | Python + Flask + NLTK | 3.8 | Text preprocessing + matching |
+| 🗄️ **Database** | MongoDB + Mongoose | 7.4 | FAQ storage, feedback, history |
+| 📊 **Charts** | Recharts | 2.7 | Analytics visualizations |
+| 🧠 **Algorithm** | TF-IDF Cosine Similarity | — | FAQ matching engine |
+| ✍️ **Font** | Poppins | — | Professional typography |
+| 🎭 **Animations** | Framer Motion | 10.x | Smooth UI transitions |
+
+---
+
+## Features
+
+```mermaid
+flowchart LR
+    subgraph CHAT["💬 Chat Features"]
+        C1["NLP Query Matching"]
+        C2["Typing Animation"]
+        C3["Confidence Score %"]
+        C4["Category Tags"]
+        C5["Context Memory\n(last 3 exchanges)"]
+        C6["Fallback Response"]
+    end
+
+    subgraph SMART["✨ Smart Features"]
+        S1["Pre-type Suggestion\nChips"]
+        S2["Context-aware\nFollow-ups"]
+        S3["Did you mean?\nSuggestions"]
+        S4["Auto-enriched\nShort Queries"]
+        S5["Category Boosting"]
+    end
+
+    subgraph MANAGE["📋 FAQ Manager"]
+        M1["Add / Edit / Delete"]
+        M2["Category Labels"]
+        M3["Real-time Search"]
+        M4["Ask Count Display"]
+        M5["Feedback Stats"]
+    end
+
+    subgraph ANALYTICS["📊 Analytics"]
+        A1["Match Rate Bar"]
+        A2["Satisfaction Score"]
+        A3["Top FAQs Chart"]
+        A4["Match Pie Chart"]
+        A5["Feedback Pie Chart"]
+    end
+
+    style CHAT fill:#1e3a5f,stroke:#3b82f6,color:#e2e8f0
+    style SMART fill:#3b1f5e,stroke:#8b5cf6,color:#e2e8f0
+    style MANAGE fill:#14532d,stroke:#22c55e,color:#e2e8f0
+    style ANALYTICS fill:#451a03,stroke:#f59e0b,color:#e2e8f0
+```
+
+---
+
+## NLP Pipeline
 
 ```mermaid
 flowchart TD
-    A([👤 User Triggers SOS]) --> B[Capture GPS Coordinates]
-    B --> C[Reverse Geocode via Google Maps]
-    C --> D[Create Alert Record in DB]
-    D --> E[Dispatch WhatsApp Alerts via Twilio]
-    E --> F{✅ Message Delivered?}
+    A(["User Query\n'how to reset my password?'"]) --> B
 
-    F -->|YES| G[Start Acknowledgment Timer]
-    F -->|NO| H[Log Delivery Failure]
-    H --> I[Retry Dispatch — Max 3 Attempts]
-    I --> F
+    subgraph PIPELINE["🐍 Python NLTK Pipeline"]
+        B["① Lowercase\n'how to reset my password?'"]
+        B --> C["② Remove Special Characters\n'how to reset my password'"]
+        C --> D["③ NLTK word_tokenize\n['how','to','reset','my','password']"]
+        D --> E["④ Remove Stopwords\n['reset','password']"]
+        E --> F["⑤ Lemmatize\nWordNetLemmatizer\n['reset','password']"]
+        F --> G["⑥ Build TF Vector\n{reset:0.5, password:0.5}"]
+    end
 
-    G --> J{🔔 Recipient Responded?}
-    J -->|YES| K[Mark Alert Acknowledged]
-    J -->|NO — Timeout| L[Escalate to Secondary Contacts]
+    G --> H["Cosine Similarity\nvs all FAQs"]
+    H --> I{"Score > 0.1?"}
+    I -->|"Yes ✅"| J["Return Best Match\n+ Confidence %\n+ Suggestions"]
+    I -->|"No ❌"| K["Fallback Response\n+ Did You Mean?"]
 
-    K --> M[Update Alert Status: RESOLVED]
-    L --> N[Dispatch Escalation Alerts]
-    N --> O{Secondary Ack?}
-
-    O -->|YES| M
-    O -->|NO| P[🚨 Flag as CRITICAL — Notify All Contacts]
-    P --> Q[Log CRITICAL Event]
-
-    M --> R([📊 Alert Lifecycle Complete])
-    Q --> R
+    style PIPELINE fill:#1a1200,stroke:#f59e0b,color:#fde68a
+    style A fill:#1e3a5f,stroke:#3b82f6,color:#60a5fa
+    style J fill:#14532d,stroke:#22c55e,color:#4ade80
+    style K fill:#4c0519,stroke:#be123c,color:#fca5a5
 ```
 
----
-
-## 📡 Request Lifecycle
+### Algorithm Detail
 
 ```mermaid
 sequenceDiagram
     autonumber
-    actor User
-    participant Frontend as 🖥️ Frontend
-    participant Backend as ⚙️ Backend (Express)
-    participant DB as 🗃️ Database
-    participant Maps as 🗺️ Google Maps API
-    participant Twilio as 📲 Twilio API
-    participant Contact as 👥 Emergency Contact
+    participant U as User
+    participant N as Node.js
+    participant P as Python Flask
+    participant DB as MongoDB
 
-    User->>Frontend: Press SOS Button
-    Frontend->>Frontend: Capture GPS Coordinates
-    Frontend->>Backend: POST /alert { lat, lng, userId }
-    Backend->>Maps: Reverse Geocode(lat, lng)
-    Maps-->>Backend: Human-readable Address
-    Backend->>DB: INSERT new Alert record
-    DB-->>Backend: alertId returned
-    Backend->>Twilio: Send WhatsApp Message(contacts, location, alertId)
-    Twilio-->>Backend: 202 Accepted + messageSid
-    Backend-->>Frontend: 201 Created { alertId, status: "DISPATCHED" }
-    Frontend-->>User: Show "Alert Sent" Confirmation
-
-    Twilio->>Contact: WhatsApp Message Delivered
-    Contact->>Twilio: Reply "OK" / Acknowledgment
-    Twilio->>Backend: POST /webhook { messageSid, status, response }
-    Backend->>DB: UPDATE Alert status = "ACKNOWLEDGED"
-    Backend-->>Twilio: 200 OK
+    U->>N: POST /api/chat { query, context }
+    N->>DB: GET all FAQs
+    DB-->>N: FAQ list
+    N->>P: POST /match { query, faqs } timeout 5s
+    P->>P: NLTK preprocess(query)
+    P->>P: Build TF vectors for all FAQs
+    P->>P: Compute cosine similarity
+    P-->>N: { best_match, confidence, suggestions }
+    N->>DB: INCREMENT askCount for matched FAQ
+    N-->>U: { answer, confidence, category,\nmatched, suggestions, context_used }
 ```
 
 ---
 
-## 🧩 Core Logic Flow
+## Context Awareness System
+
+```mermaid
+stateDiagram-v2
+    direction LR
+
+    [*] --> Empty : App starts
+    Empty --> Active : User sends first message
+    Active --> Enriched : Follow-up ≤ 5 words
+    Enriched --> Active : Next message
+    Active --> Active : New full question
+    Active --> Empty : User clears chat
+
+    note right of Enriched
+        Short query auto-merged with
+        last FAQ question before matching.
+        "What if I forgot email?" →
+        "How do I reset my password?
+        What if I forgot email?"
+    end note
+
+    note right of Active
+        Last 3 exchanges stored in
+        context array. Same-category
+        FAQs get +0.08 score boost.
+        ✨ badge shown on reply.
+    end note
+```
+
+**Example conversation flow:**
+
+```
+User:  "How do I reset my password?"
+Bot:   [Matches password reset FAQ — 87% confidence] ✅
+
+User:  "What if I forgot email?"          ← only 5 words
+Bot:   ✨ Context-aware reply
+       [Enriched to "reset password + forgot email"]
+       [Finds "What if I forgot my email too?" FAQ]
+```
+
+---
+
+## Feedback System
 
 ```mermaid
 flowchart LR
-    A[📍 Coordinates Received] --> B[Validate Payload]
-    B --> C{Valid?}
-    C -->|NO| D[Return 400 Bad Request]
-    C -->|YES| E[Geocode Address]
-    E --> F[Fetch Emergency Contacts]
-    F --> G[Build Alert Payload]
-    G --> H[Dispatch via Twilio]
-    H --> I[Store Alert + MessageSIDs]
-    I --> J[Start Ack Watchdog Timer]
-    J --> K{Ack Received?}
-    K -->|YES| L[✅ Resolve Alert]
-    K -->|NO — 5 min timeout| M[Escalate]
-    M --> N[Notify Next-of-Kin]
-    N --> K
+    A["Bot Response"] --> B["👍 Yes / 👎 No\nButtons appear"]
+    B --> C{"User clicks"}
+    C -->|"👍 Helpful"| D["feedbackHelpful++\nhelpfulCount in DB++\nGreen toast"]
+    C -->|"👎 Not Helpful"| E["notHelpful++\nnotHelpfulCount in DB++\nAmber toast"]
+    D --> F["Analytics Updated"]
+    E --> F
+    F --> G["Satisfaction %\nRecalculated"]
+    G --> H["Dashboard\nLive Update"]
+
+    style A fill:#1e3a5f,stroke:#3b82f6,color:#e2e8f0
+    style D fill:#14532d,stroke:#22c55e,color:#4ade80
+    style E fill:#451a03,stroke:#d97706,color:#fde68a
+    style H fill:#3b1f5e,stroke:#8b5cf6,color:#c4b5fd
 ```
 
 ---
 
-## 📘 API Reference
+## Analytics Dashboard
 
-### `POST /alert`
-> Trigger a new emergency alert with location data.
+```mermaid
+xychart-beta
+    title "Sample FAQ Usage — Most Asked Topics"
+    x-axis ["Password Reset", "Return Policy", "Shipping Time", "Payment Methods", "Order Tracking"]
+    y-axis "Ask Count" 0 --> 20
+    bar [18, 14, 12, 9, 7]
+```
 
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `userId` | `string` | ✅ | Unique identifier of the user triggering the alert |
-| `latitude` | `float` | ✅ | GPS latitude of the incident location |
-| `longitude` | `float` | ✅ | GPS longitude of the incident location |
-| `severity` | `string` | ❌ | Alert severity: `LOW`, `MEDIUM`, `HIGH` (default: `HIGH`) |
-| `message` | `string` | ❌ | Optional custom message to append to the alert |
-
----
-
-### `POST /webhook`
-> Receives Twilio delivery status callbacks and acknowledgment responses.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `MessageSid` | `string` | ✅ | Twilio message identifier |
-| `MessageStatus` | `string` | ✅ | Delivery status: `sent`, `delivered`, `read`, `failed` |
-| `Body` | `string` | ❌ | Inbound reply body from the recipient |
+| Metric | Description | Visual |
+|:---:|:---|:---:|
+| 📈 **Total Queries** | All chat messages sent this session | Stat card |
+| ✅ **Matched** | Queries with confidence > 10% | Stat card |
+| ⚡ **Avg Confidence** | Mean cosine similarity score | Stat card |
+| 😊 **Satisfaction** | % of 👍 feedback out of total | Stat card + bar |
+| 📊 **Match Rate** | Matched / Total × 100 | Progress bar |
+| 🏆 **Top FAQs** | Most asked questions | Horizontal bar chart |
+| 🥧 **Match Pie** | Matched vs Unmatched | Mini pie |
+| 💬 **Feedback Pie** | Helpful vs Not Helpful | Mini pie |
 
 ---
 
-### `GET /status/:alertId`
-> Retrieve the current lifecycle status of an alert.
+## File Structure
 
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `alertId` | `string` | ✅ | The unique ID of the alert to query |
+```
+faq-chatbot/
+│
+├── 📄 README.md
+│
+├── 🎨 frontend/                    ← React + Tailwind
+│   ├── package.json
+│   ├── tailwind.config.js
+│   ├── public/
+│   │   └── index.html
+│   └── src/
+│       ├── index.js
+│       ├── index.css               ← Poppins + animations
+│       ├── App.js                  ← Router + state management
+│       ├── components/
+│       │   └── Sidebar.js          ← Navigation + history
+│       └── pages/
+│           ├── ChatPage.js         ← Chat UI + context memory
+│           ├── FAQManagerPage.js   ← CRUD interface
+│           └── AnalyticsPage.js    ← Recharts dashboard
+│
+├── 🟢 backend/                     ← Node.js + Express
+│   ├── package.json
+│   ├── .env                        ← MONGO_URI, PORT, NLP_URL
+│   ├── server.js                   ← Express app entry
+│   ├── models/
+│   │   └── FAQ.js                  ← Mongoose schema
+│   └── routes/
+│       ├── faqs.js                 ← GET/POST/PUT/DELETE /api/faqs
+│       └── chat.js                 ← POST /api/chat + feedback
+│
+├── 🐍 nlp/                         ← Python Flask NLP
+│   ├── requirements.txt
+│   └── app.py                      ← NLTK pipeline + /match endpoint
+│
+└── 📦 faq-chatbot-standalone.html  ← Zero-setup demo (open in browser)
+```
 
 ---
 
-## 🔧 Example API Request
+## Setup Instructions
+
+### Option A — Standalone (Zero Setup)
 
 ```bash
-curl -X POST https://api.accident-alert.yourdomain.com/v1/alert \
-  -H "Content-Type: application/json" \
-  -H "Authorization: Bearer YOUR_API_KEY" \
-  -d '{
-    "userId": "usr_9f3a2c1d",
-    "latitude": 28.6139,
-    "longitude": 77.2090,
-    "severity": "HIGH",
-    "message": "Bike accident near highway overpass"
-  }'
+# Just double-click this file — opens in any browser instantly
+faq-chatbot-standalone.html
+```
+
+> ✅ No Node, no Python, no MongoDB needed. Full NLP runs in-browser via JS cosine similarity.
+
+---
+
+### Option B — Full Stack
+
+#### Prerequisites
+- Node.js v18+
+- Python 3.9+
+- MongoDB (optional — fallback data used if unavailable)
+
+#### Step 1 — Python NLP Service
+
+```bash
+cd nlp
+pip install -r requirements.txt
+python app.py
+# → http://localhost:8000
+```
+
+#### Step 2 — Node.js Backend
+
+```bash
+cd backend
+npm install
+
+# Edit .env
+MONGO_URI=mongodb://localhost:27017/faqchatbot
+PORT=5000
+NLP_SERVICE_URL=http://localhost:8000
+
+npm run dev
+# → http://localhost:5000
+```
+
+#### Step 3 — React Frontend
+
+```bash
+cd frontend
+npm install
+npm start
+# → http://localhost:3000
 ```
 
 ---
 
-## 📦 Example JSON Response
+## API Reference
 
+```mermaid
+graph LR
+    subgraph FAQ["📋 FAQ Endpoints — Node.js :5000"]
+        F1["GET /api/faqs\nAll FAQs"]
+        F2["POST /api/faqs\nCreate FAQ"]
+        F3["PUT /api/faqs/:id\nUpdate FAQ"]
+        F4["DELETE /api/faqs/:id\nDelete FAQ"]
+    end
+
+    subgraph CHAT["💬 Chat Endpoints — Node.js :5000"]
+        C1["POST /api/chat\n{ query, context[] }\n→ answer, confidence, suggestions"]
+        C2["POST /api/chat/feedback\n{ faq_question, helpful, query }"]
+        C3["GET /api/chat/feedback/stats\n→ satisfactionRate, byFaq"]
+        C4["GET /api/chat/suggestions\n→ top 6 popular questions"]
+    end
+
+    subgraph NLP["🐍 NLP Endpoints — Python :8000"]
+        N1["GET /health\nService status"]
+        N2["POST /match\n{ query, faqs[] }\n→ best_match, confidence"]
+        N3["POST /preprocess\n{ text }\n→ tokens (debug)"]
+    end
+
+    style FAQ fill:#1e3a5f,stroke:#3b82f6,color:#e2e8f0
+    style CHAT fill:#14532d,stroke:#22c55e,color:#e2e8f0
+    style NLP fill:#451a03,stroke:#f59e0b,color:#e2e8f0
+```
+
+### Request / Response Examples
+
+**POST /api/chat**
 ```json
+// Request
 {
-  "success": true,
-  "alertId": "alrt_7d3e9f2b1c",
-  "status": "DISPATCHED",
-  "location": {
-    "latitude": 28.6139,
-    "longitude": 77.2090,
-    "address": "National Highway 48, New Delhi, Delhi 110037, India",
-    "mapsLink": "https://maps.google.com/?q=28.6139,77.2090"
-  },
-  "contacts_notified": 3,
-  "messageSids": [
-    "SMxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
-    "SMyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy",
-    "SMzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz"
-  ],
-  "timestamp": "2025-04-23T14:32:10.482Z",
-  "escalation_scheduled_at": "2025-04-23T14:37:10.482Z"
+  "query": "What if I forgot my email?",
+  "context": [
+    { "question": "How do I reset my password?", "answer": "...", "category": "Account" }
+  ]
+}
+
+// Response
+{
+  "answer": "Contact support with your phone number or order ID...",
+  "faq_question": "What if I forgot my email too?",
+  "category": "Account",
+  "confidence": 0.74,
+  "matched": true,
+  "suggestions": ["Is my personal data safe?", "How do I contact support?"],
+  "context_used": true
 }
 ```
 
 ---
 
-## 🗂️ Response Schema
+## FAQ Dataset
 
-| Field | Type | Description |
-|---|---|---|
-| `success` | `boolean` | Whether the request was processed successfully |
-| `alertId` | `string` | Unique identifier for this alert instance |
-| `status` | `string` | Current alert state: `DISPATCHED` · `ACKNOWLEDGED` · `ESCALATED` · `RESOLVED` · `FAILED` |
-| `location.latitude` | `float` | Incident latitude |
-| `location.longitude` | `float` | Incident longitude |
-| `location.address` | `string` | Human-readable address from reverse geocoding |
-| `location.mapsLink` | `string` | Direct Google Maps URL for one-tap navigation |
-| `contacts_notified` | `integer` | Total number of contacts alerted |
-| `messageSids` | `array<string>` | Twilio message SIDs for delivery tracking |
-| `timestamp` | `ISO 8601` | UTC timestamp of alert creation |
-| `escalation_scheduled_at` | `ISO 8601` | When escalation will trigger if no acknowledgment received |
+Pre-loaded with **11 FAQs** across 6 categories:
+
+| # | Question | Category | Color |
+|:---:|:---|:---:|:---:|
+| 1 | What is your return policy? | `Orders` | 🟢 |
+| 2 | How do I reset my password? | `Account` | 🔵 |
+| 3 | What if I forgot my email too? | `Account` | 🔵 |
+| 4 | What payment methods do you accept? | `Payments` | 🟠 |
+| 5 | How long does shipping take? | `Shipping` | 🟣 |
+| 6 | Can I track my order? | `Orders` | 🟢 |
+| 7 | How do I contact customer support? | `General` | ⚪ |
+| 8 | Is my personal data safe? | `Technical` | 🔴 |
+| 9 | Do you offer student discounts? | `General` | ⚪ |
+| 10 | How do I cancel my order? | `Orders` | 🟢 |
+| 11 | What is the refund timeline? | `Payments` | 🟠 |
 
 ---
 
-## 📊 Analytics & Insights
+## What Makes This Stand Out
 
 ```mermaid
-graph LR
-    A[📥 Total Alerts] --> B[✅ Acknowledged]
-    A --> C[⏫ Escalated]
-    A --> D[❌ Failed Delivery]
-    B --> E[⏱️ Avg Response Time: 47s]
-    C --> F[🔁 Re-notified Contacts]
-    F --> G[✅ Eventually Resolved]
-    D --> H[📋 Failure Audit Log]
+quadrantChart
+    title FAQ.ai vs Basic Chatbot
+    x-axis "Basic Features" --> "Advanced Features"
+    y-axis "Low Quality" --> "High Quality"
+    quadrant-1 Production Grade
+    quadrant-2 Overengineered
+    quadrant-3 MVP
+    quadrant-4 Feature Rich
+    Basic Chatbot: [0.15, 0.2]
+    FAQ.ai Standalone: [0.72, 0.78]
+    FAQ.ai Full Stack: [0.9, 0.88]
 ```
 
-| Metric | Value |
-|---|---|
-| 🕐 Avg. Alert-to-Delivery Time | `< 3 seconds` |
-| 📬 WhatsApp Delivery Success Rate | `98.7%` |
-| 🔁 Avg. Escalation Triggers per Alert | `0.12` |
-| ✅ Avg. Acknowledgment Time | `47 seconds` |
-| 🌐 Geocoding Accuracy | `99.1%` |
-
----
-
-## 🗃️ Data Model
-
-### `alerts` Table
-
-| Column | Type | Constraints | Description |
-|---|---|---|---|
-| `id` | `VARCHAR(36)` | PRIMARY KEY | UUID alert identifier |
-| `user_id` | `VARCHAR(36)` | NOT NULL, FK | Reference to triggering user |
-| `latitude` | `DECIMAL(10,7)` | NOT NULL | Incident latitude |
-| `longitude` | `DECIMAL(10,7)` | NOT NULL | Incident longitude |
-| `address` | `TEXT` | | Reverse geocoded address |
-| `severity` | `ENUM` | DEFAULT `HIGH` | `LOW` · `MEDIUM` · `HIGH` |
-| `status` | `ENUM` | NOT NULL | `DISPATCHED` · `ACKNOWLEDGED` · `ESCALATED` · `RESOLVED` · `FAILED` |
-| `message_sids` | `JSON` | | Array of Twilio MessageSIDs |
-| `contacts_notified` | `INTEGER` | DEFAULT 0 | Count of contacts alerted |
-| `acknowledged_by` | `VARCHAR(36)` | NULLABLE | Contact ID who acknowledged |
-| `created_at` | `TIMESTAMP` | DEFAULT NOW() | Alert creation time |
-| `acknowledged_at` | `TIMESTAMP` | NULLABLE | Acknowledgment timestamp |
-| `resolved_at` | `TIMESTAMP` | NULLABLE | Resolution timestamp |
-
----
-
-## 🔐 Security
-
-| Layer | Implementation |
-|---|---|
-| **Authentication** | Bearer token validation on all protected endpoints |
-| **Rate Limiting** | 5 alert requests/minute per user via `express-rate-limit` |
-| **Input Validation** | Strict schema validation with `joi` — rejects malformed payloads |
-| **Webhook Verification** | Twilio request signature validation on `/webhook` |
-| **CORS Policy** | Whitelist-only origin enforcement |
-| **Environment Secrets** | All API keys stored in `.env` — never committed to version control |
-| **HTTPS Enforcement** | TLS 1.3 required for all API communication |
-| **Audit Logging** | Immutable structured logs for every alert lifecycle event |
-
----
-
-## 🚀 Future Scope
-
-| Feature | Description | Priority |
-|---|---|---|
-| 🏥 **Nearest Hospital Detection** | Auto-identify and notify the 3 closest hospitals using Google Places API | High |
-| 🚑 **Ambulance Dispatch Integration** | Direct API integration with ambulance services for automated dispatch | High |
-| 📍 **Live Ambulance Tracking** | Real-time map tracking of responding ambulance via WebSockets | High |
-| 🔐 **End-to-End Encryption** | Encrypt all alert payloads and location data in transit and at rest | High |
-| 🤖 **AI Severity Assessment** | ML model to classify accident severity from sensor/accelerometer data | Medium |
-| 📱 **Native Mobile App** | React Native app with background GPS and crash detection via accelerometer | Medium |
-| 🩺 **Medical Profile Sharing** | Attach blood type, allergies, and medication info to alerts for first responders | Medium |
-| 🌐 **Multi-Language Alerts** | Locale-aware alert messages in regional languages | Medium |
-| 📊 **Admin Analytics Dashboard** | Real-time operational dashboard for alert volume, response times, and failures | Low |
-| 🔔 **Push Notification Fallback** | FCM push notifications if WhatsApp delivery fails | Low |
-
----
-
-## ⚡ Getting Started
-
-```bash
-# Clone the repository
-git clone https://github.com/yourusername/accident-alert-system.git
-cd accident-alert-system
-
-# Install dependencies
-npm install
-
-# Configure environment variables
-cp .env.example .env
-# → Add your Twilio credentials, Google Maps API key, and DB connection string
-
-# Start the development server
-npm run dev
-
-# Server running at http://localhost:3000
-```
-
-### Environment Variables
-
-```env
-PORT=3000
-NODE_ENV=development
-
-# Twilio
-TWILIO_ACCOUNT_SID=ACxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-TWILIO_AUTH_TOKEN=your_auth_token
-TWILIO_WHATSAPP_FROM=whatsapp:+14155238886
-
-# Google Maps
-GOOGLE_MAPS_API_KEY=your_google_maps_api_key
-
-# Database
-DATABASE_URL=postgresql://user:password@localhost:5432/accident_alert
-
-# Security
-API_SECRET_KEY=your_super_secret_key
-```
-
----
-
-## 📁 Project Structure
-
-```
-accident-alert-system/
-├── src/
-│   ├── controllers/
-│   │   ├── alertController.js      # SOS alert creation & dispatch
-│   │   ├── webhookController.js    # Twilio callback processing
-│   │   └── statusController.js     # Alert status retrieval
-│   ├── services/
-│   │   ├── twilioService.js        # WhatsApp message dispatch
-│   │   ├── mapsService.js          # Geocoding & location services
-│   │   └── escalationService.js    # Timeout & escalation logic
-│   ├── middleware/
-│   │   ├── auth.js                 # Bearer token validation
-│   │   ├── rateLimit.js            # Request throttling
-│   │   └── twilioVerify.js         # Webhook signature verification
-│   ├── models/
-│   │   └── Alert.js                # Alert data model
-│   ├── routes/
-│   │   └── index.js                # Route definitions
-│   └── app.js                      # Express app bootstrap
-├── public/
-│   ├── index.html                  # SOS trigger interface
-│   ├── css/style.css               # Frontend styles
-│   └── js/app.js                   # Frontend logic + GPS capture
-├── .env.example
-├── package.json
-└── README.md
-```
-
----
-
-## 🤝 Contributing
-
-Contributions that improve response time, reliability, or coverage are welcome.
-
-1. Fork the repository
-2. Create your feature branch: `git checkout -b feature/nearest-hospital`
-3. Commit your changes: `git commit -m 'feat: add nearest hospital detection'`
-4. Push to the branch: `git push origin feature/nearest-hospital`
-5. Open a Pull Request
-
-Please read [CONTRIBUTING.md](CONTRIBUTING.md) for code style guidelines and PR standards.
-
----
-
-## 📄 License
-
-This project is licensed under the **MIT License** — see the [LICENSE](LICENSE) file for details.
+| Feature | Basic Chatbot | FAQ.ai |
+|:---|:---:|:---:|
+| FAQ Matching | ✅ | ✅ |
+| NLP Preprocessing | ❌ | ✅ NLTK |
+| Context Memory | ❌ | ✅ Last 3 turns |
+| Pre-type Suggestions | ❌ | ✅ 6 chips |
+| Confidence Score | ❌ | ✅ % display |
+| Category Tags | ❌ | ✅ Color coded |
+| 👍 Feedback System | ❌ | ✅ With analytics |
+| Analytics Dashboard | ❌ | ✅ Charts + stats |
+| FAQ CRUD Manager | ❌ | ✅ Full |
+| Fallback + Did You Mean? | ❌ | ✅ |
+| Typing Animation | ❌ | ✅ |
+| Professional UI | ❌ | ✅ Poppins + dark |
 
 ---
 
 <div align="center">
 
-**Built with purpose. Engineered for emergencies.**
+<img src="https://readme-typing-svg.demolab.com?font=Poppins&size=11&duration=4000&pause=2000&color=3B82F6&center=true&vCenter=true&width=500&lines=Built+with+React+%C2%B7+Node.js+%C2%B7+Python+%C2%B7+NLTK;NLP+Cosine+Similarity+%C2%B7+Context+Memory;Feedback+System+%C2%B7+Analytics+Dashboard" alt="footer" />
 
-*If this project could save even one life, it was worth building.*
+<br/>
 
-⭐ Star this repo if you believe in the mission &nbsp;|&nbsp; 🐛 [Report a Bug](https://github.com/yourusername/accident-alert-system/issues) &nbsp;|&nbsp; 💡 [Request a Feature](https://github.com/yourusername/accident-alert-system/issues)
+**Made with 💙 by Zara Alam**  
+
+<br/>
+
+![HTML5](https://img.shields.io/badge/Standalone-Open_in_Browser-E34F26?style=flat-square&logo=html5)
+![Node](https://img.shields.io/badge/Backend-Node.js_Express-339933?style=flat-square&logo=nodedotjs)
+![Python](https://img.shields.io/badge/NLP-Python_Flask_NLTK-3776AB?style=flat-square&logo=python)
+![MongoDB](https://img.shields.io/badge/DB-MongoDB-47A248?style=flat-square&logo=mongodb)
 
 </div>
