@@ -134,7 +134,7 @@ export default function ChatPage({ chatHistory, setChatHistory, analytics, setAn
   const bottomRef = useRef(null);
 
   useEffect(() => {
-    axios.get('/api/chat/suggestions').then(r => setQuickChips(r.data)).catch(() => setQuickChips([
+    axios.get(`${process.env.REACT_APP_API_URL || ''}/api/chat/suggestions`).then(r => setQuickChips(r.data)).catch(() => setQuickChips([
       { question: 'How do I reset my password?', category: 'Account' },
       { question: 'What is your return policy?', category: 'Orders' },
       { question: 'What payment methods do you accept?', category: 'Payments' },
@@ -162,7 +162,8 @@ export default function ChatPage({ chatHistory, setChatHistory, analytics, setAn
     setChatHistory(prev => [...prev, q]);
     setIsTyping(true);
     try {
-      const res = await axios.post('/api/chat', { query: q, context });
+      const baseURL = process.env.REACT_APP_API_URL || '';
+      const res = await axios.post(`${baseURL}/api/chat`, { query: q, context });
       const { answer, faq_question, category, confidence, suggestions: sugg, matched, context_used } = res.data;
       setMessages(prev => [...prev, {
         id: msgIdRef.current++, role: 'bot', text: answer,
