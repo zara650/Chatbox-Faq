@@ -3,6 +3,8 @@ import axios from 'axios';
 import { Plus, Trash2, Edit3, Check, X, Search } from 'lucide-react';
 import toast from 'react-hot-toast';
 
+const API = process.env.REACT_APP_API_URL;
+
 const CAT_COLORS = {
   Account:  'bg-blue-900/40 text-blue-300 border-blue-700',
   Orders:   'bg-green-900/40 text-green-300 border-green-700',
@@ -28,7 +30,7 @@ export default function FAQManagerPage() {
   const [form, setForm]       = useState({ question: '', answer: '', category: 'General' });
 
   useEffect(() => {
-    axios.get('/api/faqs').then(r => setFaqs(r.data.length ? r.data : SAMPLE_FAQS))
+    axios.get(`${API}/api/faqs`).then(r => setFaqs(r.data.length ? r.data : SAMPLE_FAQS))
       .catch(() => setFaqs(SAMPLE_FAQS))
       .finally(() => setLoading(false));
   }, []);
@@ -37,11 +39,11 @@ export default function FAQManagerPage() {
     if (!form.question.trim() || !form.answer.trim()) { toast.error('Question and answer are required.'); return; }
     try {
       if (editId) {
-        await axios.put(`/api/faqs/${editId}`, form);
+        await axios.put(`${API}/api/faqs/${editId}`, form);
         setFaqs(prev => prev.map(f => f._id === editId ? { ...f, ...form } : f));
         toast.success('FAQ updated!');
       } else {
-        const res = await axios.post('/api/faqs', form);
+        const res = await axios.post(`${API}/api/faqs`, form);
         setFaqs(prev => [...prev, res.data]);
         toast.success('FAQ added!');
       }
@@ -54,7 +56,7 @@ export default function FAQManagerPage() {
 
   const handleDelete = async (id) => {
     if (!window.confirm('Delete this FAQ?')) return;
-    try { await axios.delete(`/api/faqs/${id}`); } catch {}
+    try { await axios.delete(`${API}/api/faqs/${id}`); } catch {}
     setFaqs(prev => prev.filter(f => f._id !== id)); toast.success('Deleted.');
   };
 
